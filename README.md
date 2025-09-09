@@ -1,4 +1,4 @@
-# <img src="favicon.png" alt="Logo" width="32" height="32"> SQL32 [![](https://img.shields.io/badge/development-25.9.9.4-blue?style=flat-square&logoColor=white)](https://github.com/zrfisaac/BDE/releases/download/d20250812/BDE.5.2.0.2.exe) [![](https://img.shields.io/badge/patreon-$-ff69b4?logo=patreon&style=flat-square&logoColor=white)](https://www.patreon.com/zrfisaac) [![](https://img.shields.io/badge/ko--fi-$-ff69b4?logo=kofi&style=flat-square&logoColor=white)](https://ko-fi.com/zrfisaac)
+# <img src="favicon.png" alt="Logo" width="32" height="32"> SQL32 [![](https://img.shields.io/badge/development-25.9.9.5-blue?style=flat-square&logoColor=white)]() [![](https://img.shields.io/badge/patreon-$-ff69b4?logo=patreon&style=flat-square&logoColor=white)](https://www.patreon.com/zrfisaac) [![](https://img.shields.io/badge/ko--fi-$-ff69b4?logo=kofi&style=flat-square&logoColor=white)](https://ko-fi.com/zrfisaac)
 
 O **SQL32** é um projeto desenvolvido em **Delphi 7** com o objetivo de **auxiliar na realização de testes em consultas SQL** em **sistemas legados**.
 

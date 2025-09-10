@@ -6,33 +6,31 @@
 // # - site : zrfisaac.github.io
 
 // # [ delphi7 ]
-unit uMainData;
+unit uAboutForm;
 
 interface
 
 uses
+  Windows,
+  Messages,
   SysUtils,
+  Variants,
   Classes,
-  DB,
-  DBTables;
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs;
 
 type
-  TMainData = class(TDataModule)
-    bdeConection: TDatabase;
-    bdeQuery: TQuery;
+  TAboutForm = class(TForm)
   end;
 
 var
-  MainData: TMainData;
+  AboutForm: TAboutForm;
 
 implementation
-
-uses
-  uCoreUnit,
-  uConfigUnit,
-  uLangUnit,
-  uMainForm;
 
 {$R *.dfm}
 
 end.
+

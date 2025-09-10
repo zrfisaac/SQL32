@@ -13,6 +13,7 @@ object MainForm: TMainForm
   Menu = miMenu
   OldCreateOrder = False
   Position = poScreenCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object pnBack: TPanel
@@ -29,7 +30,13 @@ object MainForm: TMainForm
     Top = 242
     Width = 444
     Height = 19
-    Panels = <>
+    Panels = <
+      item
+        Width = 80
+      end
+      item
+        Width = 50
+      end>
   end
   object miMenu: TMainMenu
     Left = 8

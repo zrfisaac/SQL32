@@ -7,7 +7,10 @@ uses
   uBaseForm in 'Sources\uBaseForm.pas' {BaseForm},
   uConfigUnit in 'Sources\uConfigUnit.pas',
   uLangUnit in 'Sources\uLangUnit.pas',
-  uCoreUnit in 'Sources\uCoreUnit.pas';
+  uCoreUnit in 'Sources\uCoreUnit.pas',
+  uConfigForm in 'Sources\uConfigForm.pas' {ConfigForm},
+  uAboutForm in 'Sources\uAboutForm.pas' {AboutForm},
+  uQueryForm in 'Sources\uQueryForm.pas' {QueryForm};
 
 {$R *.res}
 

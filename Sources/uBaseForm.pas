@@ -25,6 +25,7 @@ uses
 type
   TBaseForm = class(TForm)
     pnBack: TPanel;
+    procedure fnOnClose(Sender: TObject);
   end;
 
 var
@@ -33,5 +34,12 @@ var
 implementation
 
 {$R *.dfm}
+
+{ TBaseForm }
+
+procedure TBaseForm.fnOnClose(Sender: TObject);
+begin
+  Self.pnBack.Parent := Self;
+end;
 
 end.

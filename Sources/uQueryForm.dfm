@@ -1,13 +1,14 @@
 inherited QueryForm: TQueryForm
   Height = 396
   Caption = 'QueryForm'
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnBack: TPanel
     Height = 357
-    object Splitter1: TSplitter
+    object spOutput: TSplitter
       Left = 0
-      Top = 272
+      Top = 233
       Width = 444
       Height = 4
       Cursor = crVSplit
@@ -15,19 +16,11 @@ inherited QueryForm: TQueryForm
       Color = clBlack
       ParentColor = False
     end
-    object pcOutput: TPageControl
-      Left = 0
-      Top = 276
-      Width = 444
-      Height = 81
-      Align = alBottom
-      TabOrder = 0
-    end
-    object seCode: TSynEdit
+    object meScript: TSynEdit
       Left = 0
       Top = 29
       Width = 444
-      Height = 243
+      Height = 204
       Align = alClient
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -35,7 +28,7 @@ inherited QueryForm: TQueryForm
       Font.Name = 'Courier New'
       Font.Style = []
       PopupMenu = pmCode
-      TabOrder = 1
+      TabOrder = 0
       Gutter.Font.Charset = DEFAULT_CHARSET
       Gutter.Font.Color = clWindowText
       Gutter.Font.Height = -11
@@ -49,7 +42,7 @@ inherited QueryForm: TQueryForm
       Width = 444
       Height = 29
       Caption = 'tbTool'
-      TabOrder = 2
+      TabOrder = 1
       object imVoid01: TImage
         Left = 0
         Top = 2
@@ -61,43 +54,66 @@ inherited QueryForm: TQueryForm
         Top = 2
         Width = 23
         Height = 22
-        Action = acRun
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000130B0000130B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+          33333333333333333333EEEEEEEEEEEEEEE333FFFFFFFFFFFFF3E00000000000
+          00E337777777777777F3E0F77777777770E337F33333333337F3E0F333333333
+          70E337F3333F333337F3E0F33303333370E337F3337FF33337F3E0F333003333
+          70E337F33377FF3337F3E0F33300033370E337F333777FF337F3E0F333000033
+          70E337F33377773337F3E0F33300033370E337F33377733337F3E0F333003333
+          70E337F33377333337F3E0F33303333370E337F33373333337F3E0F333333333
+          70E337F33333333337F3E0FFFFFFFFFFF0E337FFFFFFFFFFF7F3E00000000000
+          00E33777777777777733EEEEEEEEEEEEEEE33333333333333333}
+        NumGlyphs = 2
+        OnClick = btRunClick
       end
       object btOpen: TSpeedButton
         Left = 32
         Top = 2
         Width = 23
         Height = 22
-        Action = acOpen
+        Glyph.Data = {
+          76010000424D7601000000000000760000002800000020000000100000000100
+          04000000000000010000120B0000120B00001000000000000000000000000000
+          800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+          FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+          33333FFFFFFFFFFFFFFF000000000000000077777777777777770FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07F3FF3FF3FF3FFF70F00F00F00F000F07F773773773777370FFFFFFFFFFF
+          FFF07FFFFFFFFFFFFFF70CCCCCCCCCCCCCC07777777777777777088CCCCCCCCC
+          C8807FF7777777777FF700000000000000007777777777777777333333333333
+          3333333333333333333333333333333333333333333333333333}
+        NumGlyphs = 2
+        OnClick = btOpenClick
       end
     end
-  end
-  object acAction: TActionList
-    Images = imList
-    Left = 40
-    Top = 40
-    object acRun: TAction
-      Category = 'Main'
-      ShortCut = 116
-      OnExecute = acRunExecute
+    object dbgOutput: TDBGrid
+      Left = 0
+      Top = 237
+      Width = 444
+      Height = 120
+      Align = alBottom
+      DataSource = dtsOutput
+      TabOrder = 2
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'MS Sans Serif'
+      TitleFont.Style = []
     end
-    object acOpen: TAction
-      Category = 'Main'
-      ShortCut = 120
-      OnExecute = acOpenExecute
-    end
-  end
-  object imList: TImageList
-    Left = 40
-    Top = 72
   end
   object pmCode: TPopupMenu
-    Images = imList
     Left = 72
     Top = 40
   end
   object dtsOutput: TDataSource
+    DataSet = MainData.bdeQuery
     Left = 40
-    Top = 104
+    Top = 40
   end
 end

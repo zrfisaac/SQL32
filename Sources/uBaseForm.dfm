@@ -1,8 +1,8 @@
 object BaseForm: TBaseForm
   Left = 200
   Top = 140
-  Height = 320
   Width = 460
+  Height = 320
   Caption = 'BaseForm'
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -16,8 +16,8 @@ object BaseForm: TBaseForm
   object pnBack: TPanel
     Left = 0
     Top = 0
-    Width = 912
-    Height = 441
+    Width = 444
+    Height = 281
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 0

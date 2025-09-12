@@ -42,17 +42,43 @@ object MainForm: TMainForm
     Left = 8
     Top = 8
     object miHelp: TMenuItem
-      Caption = 'miHelp'
+      Caption = 'Ajuda'
       object miConfig: TMenuItem
-        Caption = 'miConfig'
+        Caption = 'Configura'#231#227'o'
+        OnClick = miConfigClick
       end
       object miAbout: TMenuItem
-        Caption = 'miAbout'
+        Caption = 'Sobre'
+        OnClick = miAboutClick
       end
     end
   end
   object acAction: TActionList
     Left = 40
     Top = 8
+    object acConfig: TAction
+      Category = 'Main'
+      Caption = 'acConfig'
+      ShortCut = 113
+      OnExecute = acConfigExecute
+    end
+    object acClose: TAction
+      Category = 'Main'
+      Caption = 'acClose'
+      ShortCut = 27
+      OnExecute = acCloseExecute
+    end
+    object acRun: TAction
+      Category = 'Main'
+      Caption = 'acRun'
+      ShortCut = 116
+      OnExecute = acRunExecute
+    end
+    object acOpen: TAction
+      Category = 'Main'
+      Caption = 'acOpen'
+      ShortCut = 120
+      OnExecute = acOpenExecute
+    end
   end
 end

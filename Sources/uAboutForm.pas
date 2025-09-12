@@ -19,10 +19,15 @@ uses
   Graphics,
   Controls,
   Forms,
-  Dialogs;
+  Dialogs, StdCtrls, ExtCtrls, ActnList;
 
 type
   TAboutForm = class(TForm)
+    Panel1: TPanel;
+    Panel2: TPanel;
+    acAction: TActionList;
+    Main: TAction;
+    procedure MainExecute(Sender: TObject);
   end;
 
 var
@@ -31,6 +36,11 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TAboutForm.MainExecute(Sender: TObject);
+begin
+  Self.Close;
+end;
 
 end.
 

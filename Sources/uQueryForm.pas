@@ -27,25 +27,29 @@ uses
   SynEdit,
   ActnList,
   ImgList,
-  uBaseForm, Menus, DB;
+  uBaseForm,
+  Menus,
+  DB,
+  Grids,
+  DBGrids;
 
 type
   TQueryForm = class(TBaseForm)
-    pcOutput: TPageControl;
-    Splitter1: TSplitter;
-    seCode: TSynEdit;
+    spOutput: TSplitter;
+    meScript: TSynEdit;
     tbTool: TToolBar;
     imVoid01: TImage;
     btRun: TSpeedButton;
     btOpen: TSpeedButton;
-    acAction: TActionList;
-    imList: TImageList;
-    acRun: TAction;
-    acOpen: TAction;
     pmCode: TPopupMenu;
     dtsOutput: TDataSource;
-    procedure acRunExecute(Sender: TObject);
-    procedure acOpenExecute(Sender: TObject);
+    dbgOutput: TDBGrid;
+    procedure FormCreate(Sender: TObject);
+    procedure btOpenClick(Sender: TObject);
+    procedure btRunClick(Sender: TObject);
+  public
+    procedure fnRun;
+    procedure fnOpen;
   end;
 
 var
@@ -58,16 +62,40 @@ uses
 
 {$R *.dfm}
 
-procedure TQueryForm.acRunExecute(Sender: TObject);
+procedure TQueryForm.fnOpen;
 begin
-  inherited;
-  //
+  MainData.bdeQuery.Close;
+  MainData.bdeQuery.SQL.Text := Self.meScript.LineText;
+  MainData.bdeQuery.Open;
+  Self.spOutput.Visible := True;
+  Self.dbgOutput.Visible := True;
 end;
 
-procedure TQueryForm.acOpenExecute(Sender: TObject);
+procedure TQueryForm.fnRun;
+begin
+  Self.spOutput.Visible := False;
+  Self.dbgOutput.Visible := False;
+  MainData.bdeQuery.Close;
+  MainData.bdeQuery.ExecSQL;
+end;
+
+procedure TQueryForm.FormCreate(Sender: TObject);
 begin
   inherited;
-  //
+  Self.spOutput.Visible := False;
+  Self.dbgOutput.Visible := False;
+end;
+
+procedure TQueryForm.btOpenClick(Sender: TObject);
+begin
+  inherited;
+  Self.fnOpen;
+end;
+
+procedure TQueryForm.btRunClick(Sender: TObject);
+begin
+  inherited;
+  Self.fnRun;
 end;
 
 end.

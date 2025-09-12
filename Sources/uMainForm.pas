@@ -35,7 +35,17 @@ type
     miConfig: TMenuItem;
     miAbout: TMenuItem;
     acAction: TActionList;
+    acConfig: TAction;
+    acClose: TAction;
+    acRun: TAction;
+    acOpen: TAction;
     procedure FormCreate(Sender: TObject);
+    procedure miConfigClick(Sender: TObject);
+    procedure miAboutClick(Sender: TObject);
+    procedure acConfigExecute(Sender: TObject);
+    procedure acCloseExecute(Sender: TObject);
+    procedure acRunExecute(Sender: TObject);
+    procedure acOpenExecute(Sender: TObject);
   private
     Base: TBaseForm;
   public
@@ -55,6 +65,8 @@ uses
   uConfigUnit,
   uLangUnit,
   uMainData,
+  uAboutForm,
+  uConfigForm,
   uQueryForm;
 
 {$R *.dfm}
@@ -64,8 +76,26 @@ begin
   // # : Title
   Self.Caption := Application.Title;
 
+  // # : DataModule
+  if not Assigned(MainData) then
+    MainData := TMainData.Create(Application);
+
+  // # : Config
+  if not Assigned(ConfigForm) then
+    ConfigForm := TConfigForm.Create(Application);
+
   // # : Query
   Self.Menu(TQueryForm,QueryForm);
+
+  // # : Bde
+  if (StrToBoolDef(Config.Values['Bde_Conection'],False)) then
+  begin
+    ConfigForm.fnConnect;
+  end
+  else
+  begin
+    Self.Menu(TConfigForm, ConfigForm);
+  end;
 end;
 
 procedure TMainForm.Menu(_pClass: TComponentClass);
@@ -73,6 +103,7 @@ var
   _vInstance: TBaseForm;
 begin
   _vInstance := TBaseForm(_pClass.NewInstance);
+  _vInstance.Create(Application);
   _vInstance.ShowModal;
   _vInstance.Free;
 end;
@@ -104,6 +135,52 @@ begin
     _vInstance := TBaseForm(_pReference);
   Self.Base := _vInstance;
   Self.Base.pnBack.Parent := Self.pnBack;
+end;
+
+procedure TMainForm.miConfigClick(Sender: TObject);
+begin
+  Self.Menu(TConfigForm, ConfigForm);
+end;
+
+procedure TMainForm.miAboutClick(Sender: TObject);
+begin
+  Self.Menu(TAboutForm);
+end;
+
+procedure TMainForm.acConfigExecute(Sender: TObject);
+begin
+  Self.Menu(TConfigForm, ConfigForm);
+end;
+
+procedure TMainForm.acCloseExecute(Sender: TObject);
+begin
+  if Assigned(Self.Base) then
+  begin
+    if not(Self.Base.Name = 'QueryForm') then
+      Self.Base.fnOnClose(Nil);
+  end;
+end;
+
+procedure TMainForm.acRunExecute(Sender: TObject);
+begin
+  if Assigned(Self.Base) then
+  begin
+    if (Self.Base.Name = 'QueryForm') then
+    begin
+      TQueryForm(Self.Base).fnRun;
+    end;
+  end;
+end;
+
+procedure TMainForm.acOpenExecute(Sender: TObject);
+begin
+  if Assigned(Self.Base) then
+  begin
+    if (Self.Base.Name = 'QueryForm') then
+    begin
+      TQueryForm(Self.Base).fnOpen;
+    end;
+  end;
 end;
 
 end.

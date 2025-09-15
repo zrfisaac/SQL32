@@ -1,4 +1,5 @@
 # [ gitignore ]
+Binaries/*.sql
 
 # - : zrfisaac.gitignore.delphi7 : 25.8.9.1
 *.~*

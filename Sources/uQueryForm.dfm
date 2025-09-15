@@ -1,14 +1,17 @@
 inherited QueryForm: TQueryForm
-  Height = 396
+  Height = 400
   Caption = 'QueryForm'
+  Constraints.MinHeight = 300
+  Constraints.MinWidth = 400
   OnCreate = FormCreate
+  OnDestroy = FormDestroy
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnBack: TPanel
-    Height = 357
+    Height = 361
     object spOutput: TSplitter
       Left = 0
-      Top = 233
+      Top = 237
       Width = 444
       Height = 4
       Cursor = crVSplit
@@ -20,20 +23,23 @@ inherited QueryForm: TQueryForm
       Left = 0
       Top = 29
       Width = 444
-      Height = 204
+      Height = 208
       Align = alClient
+      Constraints.MinHeight = 80
+      Constraints.MinWidth = 320
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
       Font.Height = -13
       Font.Name = 'Courier New'
       Font.Style = []
-      PopupMenu = pmCode
+      PopupMenu = pmScript
       TabOrder = 0
       Gutter.Font.Charset = DEFAULT_CHARSET
       Gutter.Font.Color = clWindowText
       Gutter.Font.Height = -11
       Gutter.Font.Name = 'Courier New'
       Gutter.Font.Style = []
+      Highlighter = SynSQLSyn
       FontSmoothing = fsmNone
     end
     object tbTool: TToolBar
@@ -94,11 +100,14 @@ inherited QueryForm: TQueryForm
     end
     object dbgOutput: TDBGrid
       Left = 0
-      Top = 237
+      Top = 241
       Width = 444
       Height = 120
       Align = alBottom
+      Constraints.MinHeight = 80
+      Constraints.MinWidth = 320
       DataSource = dtsOutput
+      PopupMenu = pmOutput
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -107,7 +116,7 @@ inherited QueryForm: TQueryForm
       TitleFont.Style = []
     end
   end
-  object pmCode: TPopupMenu
+  object pmScript: TPopupMenu
     Left = 72
     Top = 40
   end
@@ -115,5 +124,34 @@ inherited QueryForm: TQueryForm
     DataSet = MainData.bdeQuery
     Left = 40
     Top = 40
+  end
+  object pmOutput: TPopupMenu
+    Left = 72
+    Top = 72
+    object miOutputExport: TMenuItem
+      Caption = 'Exportar'
+      object miOutputExportCsv: TMenuItem
+        Caption = 'CSV'
+      end
+      object miOutputExportAll: TMenuItem
+        Caption = 'Tudo'
+      end
+    end
+    object miOutputCopy: TMenuItem
+      Caption = 'Copiar'
+      object miOutputCopyCsv: TMenuItem
+        Caption = 'CSV'
+      end
+      object miOutputCopyAll: TMenuItem
+        Caption = 'Tudo'
+      end
+    end
+  end
+  object SynSQLSyn: TSynSQLSyn
+    Options.AutoDetectEnabled = False
+    Options.AutoDetectLineLimit = 0
+    Options.Visible = False
+    Left = 40
+    Top = 72
   end
 end

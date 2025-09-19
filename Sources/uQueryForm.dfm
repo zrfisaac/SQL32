@@ -107,7 +107,6 @@ inherited QueryForm: TQueryForm
       Constraints.MinHeight = 80
       Constraints.MinWidth = 320
       DataSource = dtsOutput
-      PopupMenu = pmOutput
       TabOrder = 2
       TitleFont.Charset = DEFAULT_CHARSET
       TitleFont.Color = clWindowText
@@ -125,33 +124,23 @@ inherited QueryForm: TQueryForm
     Left = 40
     Top = 40
   end
-  object pmOutput: TPopupMenu
-    Left = 72
-    Top = 72
-    object miOutputExport: TMenuItem
-      Caption = 'Exportar'
-      object miOutputExportCsv: TMenuItem
-        Caption = 'CSV'
-      end
-      object miOutputExportAll: TMenuItem
-        Caption = 'Tudo'
-      end
-    end
-    object miOutputCopy: TMenuItem
-      Caption = 'Copiar'
-      object miOutputCopyCsv: TMenuItem
-        Caption = 'CSV'
-      end
-      object miOutputCopyAll: TMenuItem
-        Caption = 'Tudo'
-      end
-    end
-  end
   object SynSQLSyn: TSynSQLSyn
     Options.AutoDetectEnabled = False
     Options.AutoDetectLineLimit = 0
     Options.Visible = False
     Left = 40
+    Top = 72
+  end
+  object dgSaveCsv: TSaveDialog
+    FileName = 'TABELA.csv'
+    Filter = 'Arquivo CSV (*.csv)|*.csv'
+    Left = 104
+    Top = 40
+  end
+  object dgSaveSelect: TSaveDialog
+    FileName = 'SELECT.sql'
+    Filter = 'Select SQL (*.sql)|*.sql'
+    Left = 104
     Top = 72
   end
 end

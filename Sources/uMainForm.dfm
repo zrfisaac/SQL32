@@ -35,12 +35,24 @@ object MainForm: TMainForm
         Width = 80
       end
       item
+        Alignment = taRightJustify
         Width = 50
       end>
   end
   object miMenu: TMainMenu
     Left = 8
     Top = 8
+    object miExport: TMenuItem
+      Caption = 'Export'
+      object miExportCsv: TMenuItem
+        Caption = 'CSV'
+        OnClick = miExportCsvClick
+      end
+      object miExportSelect: TMenuItem
+        Caption = 'Select'
+        OnClick = miExportSelectClick
+      end
+    end
     object miHelp: TMenuItem
       Caption = 'Ajuda'
       object miConfig: TMenuItem
@@ -71,13 +83,13 @@ object MainForm: TMainForm
     object acRun: TAction
       Category = 'Main'
       Caption = 'acRun'
-      ShortCut = 116
+      ShortCut = 120
       OnExecute = acRunExecute
     end
     object acOpen: TAction
       Category = 'Main'
       Caption = 'acOpen'
-      ShortCut = 120
+      ShortCut = 116
       OnExecute = acOpenExecute
     end
   end

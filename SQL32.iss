@@ -1,6 +1,6 @@
 [Setup]
 AppName=SQL32
-AppVersion=25.9.12.1
+AppVersion=25.9.19.1
 DefaultDirName={userappdata}\SQL32
 DefaultGroupName={{9C6137AF-F463-4F95-8FA1-DA23B0253E75}
 OutputBaseFilename=SETUP

@@ -39,6 +39,9 @@ type
     acClose: TAction;
     acRun: TAction;
     acOpen: TAction;
+    miExport: TMenuItem;
+    miExportCsv: TMenuItem;
+    miExportSelect: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure miConfigClick(Sender: TObject);
     procedure miAboutClick(Sender: TObject);
@@ -46,6 +49,8 @@ type
     procedure acCloseExecute(Sender: TObject);
     procedure acRunExecute(Sender: TObject);
     procedure acOpenExecute(Sender: TObject);
+    procedure miExportCsvClick(Sender: TObject);
+    procedure miExportSelectClick(Sender: TObject);
   private
     Base: TBaseForm;
   public
@@ -75,6 +80,10 @@ procedure TMainForm.FormCreate(Sender: TObject);
 begin
   // # : Title
   Self.Caption := Application.Title;
+
+  // # : Status
+  Self.sbFooter.Panels[0].Text := fnVersion;
+  Self.sbFooter.Panels[1].Text := fnVersion('InternalName') + '     .';
 
   // # : DataModule
   if not Assigned(MainData) then
@@ -181,6 +190,16 @@ begin
       TQueryForm(Self.Base).fnOpen;
     end;
   end;
+end;
+
+procedure TMainForm.miExportCsvClick(Sender: TObject);
+begin
+  QueryForm.fnExportCsv;
+end;
+
+procedure TMainForm.miExportSelectClick(Sender: TObject);
+begin
+  QueryForm.fnExportSelect;
 end;
 
 end.

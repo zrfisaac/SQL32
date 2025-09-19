@@ -26,8 +26,11 @@ type
     Panel1: TPanel;
     Panel2: TPanel;
     acAction: TActionList;
-    Main: TAction;
-    procedure MainExecute(Sender: TObject);
+    actEsc: TAction;
+    ascEnter: TAction;
+    procedure act_Execute(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   end;
 
 var
@@ -37,7 +40,13 @@ implementation
 
 {$R *.dfm}
 
-procedure TAboutForm.MainExecute(Sender: TObject);
+procedure TAboutForm.act_Execute(Sender: TObject);
+begin
+  Self.Close;
+end;
+
+procedure TAboutForm.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
 begin
   Self.Close;
 end;

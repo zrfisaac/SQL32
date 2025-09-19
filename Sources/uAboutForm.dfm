@@ -12,6 +12,9 @@ object AboutForm: TAboutForm
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  Position = poScreenCenter
+  OnClick = act_Execute
+  OnKeyDown = FormKeyDown
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel
@@ -30,6 +33,7 @@ object AboutForm: TAboutForm
     ParentColor = True
     ParentFont = False
     TabOrder = 0
+    OnClick = act_Execute
   end
   object Panel2: TPanel
     Left = 0
@@ -47,14 +51,20 @@ object AboutForm: TAboutForm
     ParentColor = True
     ParentFont = False
     TabOrder = 1
+    OnClick = act_Execute
   end
   object acAction: TActionList
     Left = 8
     Top = 64
-    object Main: TAction
-      Caption = 'Main'
+    object actEsc: TAction
+      Caption = 'actEsc'
       ShortCut = 27
-      OnExecute = MainExecute
+      OnExecute = act_Execute
+    end
+    object ascEnter: TAction
+      Caption = 'ascEnter'
+      ShortCut = 13
+      OnExecute = act_Execute
     end
   end
 end
